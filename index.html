@@ -68,6 +68,32 @@
             <p class="celebration-text" id="celebrationEmojis"></p>
         </div>
     </div>
+<!-- Contenedor dinámico para el video -->
+<div id="video-container" style="text-align: center; margin-top: 30px; position: relative; z-index: 10; display: none;">
+    <iframe 
+        id="footer-video-frame"
+        src="" 
+        width="320" 
+        height="180" 
+        style="max-width: 100%; border: none; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);" 
+        allow="autoplay; fullscreen; encrypted-media; picture-in-picture" 
+        allowfullscreen>
+    </iframe>
+</div>
+
+<!-- Script automático que lee el config.js y muestra el video -->
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        if (window.VALENTINE_CONFIG && window.VALENTINE_CONFIG.footerVideo && window.VALENTINE_CONFIG.footerVideo.enabled) {
+            const container = document.getElementById('video-container');
+            const iframe = document.getElementById('footer-video-frame');
+            if (container && iframe) {
+                iframe.src = window.VALENTINE_CONFIG.footerVideo.videoUrl;
+                container.style.display = 'block'; // Lo hace visible
+            }
+        }
+    });
+</script>
 
     <!-- Scripts -->
     <script src="config.js"></script>
